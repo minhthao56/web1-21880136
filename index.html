@@ -99,7 +99,7 @@
         </div>
       </nav>
     </header>
-    <main>
+    <main id="main-content">
       <div id="carousel-home" class="carousel slide" data-bs-ride="carousel">
         <ol class="carousel-indicators">
           <li
@@ -154,47 +154,7 @@
         </div>
       </div>
       <!-- Product -->
-      <section class="container" id="product-home">
-        <div class="row text-center py-5">
-          <div class="col col-lg-3 col-md-6 col-sm-12">
-            <img src="./images/icon-1.png" alt="" />
-            <h3>Coffee</h3>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry
-            </p>
-            <a href="#" class="readmore btn btn-link pt-0">Read more</a>
-          </div>
-          <div class="col col-lg-3 col-md-6 col-sm-12">
-            <img src="./images/icon-2.png" alt="" />
-            <h3>Drinks</h3>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry
-            </p>
-            <a href="#" class="readmore btn btn-link pt-0">Read more</a>
-          </div>
-          <div class="col col-lg-3 col-md-6 col-sm-12">
-            <img src="./images/icon-3.png" alt="" />
-            <h3>Cakes</h3>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry
-            </p>
-            <a href="#" class="readmore btn btn-link pt-0">Read more</a>
-          </div>
-          <div class="col col-lg-3 col-md-6 col-sm-12">
-            <img src="./images/icon-4.png" alt="" />
-            <h3>Ice-creams</h3>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry
-            </p>
-            <a href="#" class="readmore btn btn-link pt-0">Read more</a>
-          </div>
-        </div>
-      </section>
-
+      <section class="container" id="product-home"></section>
       <!-- About us -->
       <section class="container-fluid py-5" id="about-us">
         <div class="container">
@@ -245,62 +205,8 @@
           </div>
         </div>
       </section>
-
       <!-- News -->
-
-      <section class="container mb-5" id="news-home">
-        <h1 class="text-black-50 py-4">News</h1>
-        <div class="row">
-          <div class="col col-lg-4 col-md-6 col-sm-12 py-2">
-            <div class="float-start me-4">
-              <div class="text-white rounded-4 text-center">
-                Dec. <br />
-                25.
-              </div>
-              <a href="#" class="readmore btn btn-link p-0">Read more</a>
-            </div>
-            <div>
-              <h3>Accumsan at</h3>
-              <p class="text-black-50">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry
-              </p>
-            </div>
-          </div>
-          <div class="col col-lg-4 col-md-6 col-sm-12 py-2">
-            <div class="float-start me-4">
-              <div class="text-white rounded-4 text-center">
-                Dec. <br />
-                25.
-              </div>
-              <a href="#" class="readmore btn btn-link p-0">Read more</a>
-            </div>
-            <div>
-              <h3>Typi non habent</h3>
-              <p class="text-black-50">
-                It has survived not only five centuries, but also the leap into
-                electronic typesetting
-              </p>
-            </div>
-          </div>
-          <div class="col col-lg-4 col-md-6 col-sm-12 py-2">
-            <div class="float-start me-4">
-              <div class="text-white rounded-4 text-center">
-                Dec. <br />
-                25.
-              </div>
-              <a href="#" class="readmore btn btn-link p-0">Read more</a>
-            </div>
-            <div>
-              <h3>Claritas est etiam</h3>
-              <p class="text-black-50">
-                It was popularised in the 1960s with the release of Letraset
-                sheets containing
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <section class="container mb-5" id="news-home"></section>
     </main>
     <footer class="container-fluid">
       <ul class="nav justify-content-center mb-3">
@@ -374,6 +280,8 @@
       </div>
     </div>
 
+    <!-- JS files in src -->
+    <script src="./js/21880136.js"></script>
     <!-- Bootstrap JavaScript Libraries -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
@@ -386,5 +294,85 @@
       integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
       crossorigin="anonymous"
     ></script>
+
+    <!-- Handle bar -->
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+    <!-- Template handle bar -->
+    <script id="product-template" type="text/x-handlebars-template">
+      <div class="row text-center py-5">
+        {{#each data}}
+          <div class="col col-lg-3 col-md-6 col-sm-12">
+            <img src="{{imagepath}}" alt="{{name}}""
+            onmouseenter="setActiveImage(this,`{{imagepath}}`, true)"
+            onmouseleave="setActiveImage(this,`{{imagepath}}`,  false)"/>
+            <h3>{{name}}</h3>
+            <p>
+             {{summary}}
+            </p>
+            <a href="#" class="readmore btn btn-link pt-0" onclick="gotoDetail(`{{id}}`, `products`)">Read more</a>
+          </div>
+        {{/each}}
+      </div>
+    </script>
+
+    <script id="news-template" type="text/x-handlebars-template">
+      <h1 class="text-black-50 py-4">News</h1>
+      <div class="row">
+        {{#each data}}
+          <div class="col col-lg-4 col-md-6 col-sm-12 py-2">
+            <div class="float-start me-4">
+              <div class="date text-white rounded-4 text-center">
+                {{date}}
+              </div>
+              <a
+                href="#"
+                class="readmore btn btn-link p-0"
+                onclick="gotoDetail(`{{id}}`, `news`)"
+              >Read more</a>
+            </div>
+            <div>
+              <h3>{{name}}</h3>
+              <p class="text-black-50">
+                {{summary}}
+              </p>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </script>
+
+    <script id="detail-template" type="text/x-handlebars-template">
+      <div class="container-fluid mb-3" id="small-banner"></div>
+      {{#each data}}
+        <div class="container" id="content-detail">
+          <h1 class="text-black-10">{{name}}</h1>
+          <p>{{{description}}}</p>
+        </div>
+      {{/each}}
+    </script>
+
+    <!-- Handle function -->
+    <script>
+      fetchDataAndBindingView("products", "product-template", "product-home");
+      fetchDataAndBindingView("news", "news-template", "news-home");
+
+      function gotoDetail(id, entity) {
+        fetchDataAndBindingView(
+          `${entity}/${id}`,
+          "detail-template",
+          "main-content"
+        );
+      }
+
+      function setActiveImage(element, imagePath, isActive) {
+        if (isActive) {
+          element.src = imagePath.replace(".", "-active.");
+        } else {
+          element.src = imagePath;
+        }
+        element.nextElementSibling.classList.toggle("text-blue");
+      }
+    </script>
   </body>
 </html>

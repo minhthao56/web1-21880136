@@ -51,6 +51,12 @@ h1 {
 
 }
 
+#small-banner{
+    background: url("../images//bg-banner.gif");
+    height: 0.5rem;
+    
+}
+
 #carousel-home li{
     width: 1.2rem;
     height: 1.2rem;
@@ -71,6 +77,10 @@ h1 {
     color: var(--web1-blue);
 }
 
+#product-home h3.text-blue{
+    color: var(--web1-blue);
+}
+
 #about-us{
     background-color: var(--web1-pink);
 }
@@ -84,12 +94,17 @@ h1 {
     font-family: 'Changa One', cursive;
 }
 
-#news-home .rounded-4{
+#news-home .date{
     background-color: var(--web1-green);
     font-size: 1.5rem;
     font-weight: 900;
     font-family: 'Changa One', cursive;
-    padding: 0.75rem 0.75rem;
+    width: 70px;
+    height:60px;  
+    word-wrap: break-word; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 footer{
@@ -113,4 +128,14 @@ footer li a.active{
 /* Modal from login */
 #modalFormLogin button{
     background-color: var(--web1-blue);
+}
+
+/* Detail */
+
+#content-detail{
+    padding: 2rem 0;
+
+}
+#content-detail p{
+    color: rgba(0, 0, 0, 0.5);
 }
