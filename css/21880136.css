@@ -73,6 +73,10 @@ h1 {
     border-radius: 100%;
 }
 
+.readmore{
+    color: var(--web1-blue);  
+}
+
 #product-home a{
     color: var(--web1-blue);
 }
@@ -138,4 +142,25 @@ footer li a.active{
 }
 #content-detail p{
     color: rgba(0, 0, 0, 0.5);
+}
+
+/* --About-- */
+/* Testimonials */
+
+#about-us-content p{
+    color: rgba(0, 0, 0, 0.5);
+}
+
+#testimonials-about{
+    background-color: var(--web1-pink);
+    padding: 3.75rem 7rem;
+}
+
+/* Our team */
+
+#our-team-about{
+    padding: 0 5rem;
+}
+#our-team-about h1{
+    color: rgba(0, 0, 0, 0.8);
 }
