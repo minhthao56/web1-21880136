@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>21880136 - Web1 Project</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- font awesome  -->
+    <script
+      src="https://kit.fontawesome.com/1415907041.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Bootstrap CSS v5.2.0-beta1 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+
+    <!-- CSS  -->
+    <link rel="stylesheet" href="./css/21880136.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-sm navbar-light">
+        <div class="container">
+          <a class="navbar-brand" href="./index.html"
+            ><img src="./images/logo.png" alt="logo"
+          /></a>
+          <button
+            class="navbar-toggler d-lg-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0" id="menu-header">
+              <li class="nav-item">
+                <a class="nav-link" href="./index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./gallery.html">Gallery</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="./blogs.html">Blogs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./contacts.html">Contacts</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalLogin"
+                  href="#"
+                  >Login</a
+                >
+              </li>
+            </ul>
+            <form
+              class="d-flex my-2 my-lg-0 border rounded-pill"
+              id="from-search"
+            >
+              <input
+                class="form-control me-sm-2 border-0 rounded-pill ms-1"
+                type="text"
+                placeholder="Search"
+              />
+              <button class="btn" type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main id="main-content">
+      <!-- Banner -->
+      <div class="mb-5 mx-3" id="small-banner"></div>
+      <!-- Blogs -->
+      <div class="container">
+        <div class="row">
+          <div class="col col-lg-8" id="blogs-list"></div>
+          <div class="col col-lg-4" id="blogs-categories"></div>
+        </div>
+      </div>
+    </main>
+    <footer class="container-fluid">
+      <ul class="nav justify-content-center mb-3">
+        <li class="nav-item">
+          <a class="nav-link" href="#" aria-current="page">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Gallery</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Blogs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contacts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+      </ul>
+      <p class="text-center text-white-50">
+        Copyright &copy; 2022 by Nguyen Minh Thao
+      </p>
+      <!-- place footer here -->
+    </footer>
+    <!-- modal login -->
+
+    <div
+      class="modal fade"
+      id="modalLogin"
+      tabindex="-1"
+      aria-labelledby="modalLogin"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form action="" id="modalFormLogin">
+              <h3 class="text-center">Login Form</h3>
+              <div class="mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Username"
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Password"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary w-100 mb-3 border-0">
+                Login
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS files in src -->
+    <script src="./js/21880136.js"></script>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+      integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Handle bar -->
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="./js/handlebars-pagination-helper.js"></script>
+
+    <!-- Template handle bar -->
+    <script id="blog-list-template" type="text/x-handlebars-template">
+      <h1 class="mb-4">Blogs</h1>
+      {{#each data}}
+        <div class="mb-4 clearfix">
+          <h3>{{name}}</h3>
+          <p class="mb-2 text-black-50">by
+            {{author}}
+            in
+            <a
+              href="#"
+              onclick='fetchDataAndBindingView(
+              "blogs/categories/{{category.id}}",
+              "blog-list-template",
+              "blogs-list",
+              true
+            )'
+            >Blog.{{category.name}}</a>
+            on
+            {{formatDate date}}
+            Hits:
+            <a href="#">Comment ({{comments.length}})</a>
+          </p>
+          <div class="clearfix">
+            <img
+              src="{{thumbpath}}"
+              alt="{{thumbpath}}"
+              class="float-start img-thumbnail rounded-4 me-3"
+            />
+            <p class="text-black-50">
+              {{summary}}
+            </p>
+            <a href="#" class="readmore btn btn-link p-0 m-0">Read more</a>
+          </div>
+        </div>
+      {{/each}}
+
+      {{#pagination currentPage pageCount}}
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            {{#each pages}}
+              {{#if isCurrent}}
+                <li class="page-item disabled" aria-current="page">
+                  <a
+                    class="page-link"
+                    href="#"
+                    onclick=' fetchDataAndBindingView(
+                    "blogs?page={{page}}",
+                    "blog-list-template",
+                    "blogs-list",
+                    true
+                  );'
+                  >{{page}}</a>
+                </li>
+              {{/if}}
+              {{#unless isCurrent}}
+                <li class="page-item"><a
+                    class="page-link"
+                    href="#"
+                    onclick=' fetchDataAndBindingView(
+                       "blogs?page={{page}}",
+                      "blog-list-template",
+                      "blogs-list",
+                      true
+                    );'
+                  >{{page}}</a></li>
+              {{/unless}}
+            {{/each}}
+          </ul>
+        </nav>
+      {{/pagination}}
+    </script>
+    <script id="blogs-categories-template" type="text/x-handlebars-template">
+      <h1 class="mb-4">Categories</h1>
+      <ul class="m-0 p-0">
+        {{#each data}}
+          <li class="mb-2">
+            <img src="./images/marker1.png" alt="" class="me-2" />
+            <a
+              href="#"
+              class="text-decoration-none text-black-50"
+              onclick='fetchDataAndBindingView(
+              "blogs/categories/{{id}}",
+              "blog-list-template",
+              "blogs-list",
+              true
+            )'
+            >
+              {{name}}
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    </script>
+
+    <script
+      id="blogs-detail-template"
+      type="text/x-handlebars-template"
+    ></script>
+
+    <!-- Handle function -->
+
+    <script>
+      Handlebars.registerHelper("formatDate", function (date) {
+        const data = new Date(date);
+
+        return data.toLocaleString({
+          weekday: "short",
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+          timeZoneName: "short",
+        });
+      });
+      fetchDataAndBindingView(
+        "blogs?page=1",
+        "blog-list-template",
+        "blogs-list",
+        true
+      );
+      fetchDataAndBindingView(
+        "blogs-categories",
+        "blogs-categories-template",
+        "blogs-categories"
+      );
+    </script>
+  </body>
+</html>

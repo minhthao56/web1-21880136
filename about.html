@@ -117,10 +117,10 @@
     <footer class="container-fluid">
       <ul class="nav justify-content-center mb-3">
         <li class="nav-item">
-          <a class="nav-link active" href="#" aria-current="page">Home</a>
+          <a class="nav-link" href="#" aria-current="page">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link active" href="#">About</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Gallery</a>
@@ -300,7 +300,7 @@
     </script>
 
     <script id="detail-about-template" type="text/x-handlebars-template">
-      <div class="container px-5 mb-5" id="detail-about-us">
+      <div class="container px-5 mb-5 clearfix" id="detail-about-us">
         {{#each data}}
           <h1 class="mb-5">
             {{name}}

@@ -167,3 +167,11 @@ footer li a.active{
 #our-team-about h1{
     color: rgba(0, 0, 0, 0.8);
 }
+
+/* Blogs */
+
+#blogs-categories ul{
+    list-style-type: none;
+
+    
+}
