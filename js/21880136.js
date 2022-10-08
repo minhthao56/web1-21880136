@@ -44,7 +44,6 @@ async function getAuthenticate(username, password) {
 }
 
 async function login(e) {
-  console.log({ e });
   e.preventDefault();
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
@@ -90,11 +89,11 @@ function controlDisplay(isLogin = true) {
   const linkLogin = document.getElementsByClassName("linkLogin");
   const linkLogout = document.getElementsByClassName("linkLogout");
 
-  let displayLogin = "block";
+  let displayLogin = "flex";
   let displayLogout = "none";
 
   if (isLogin) {
-    displayLogout = "block";
+    displayLogout = "flex";
     displayLogin = "none";
   }
 
@@ -102,9 +101,52 @@ function controlDisplay(isLogin = true) {
     linkLogin[i].style.display = displayLogin;
     linkLogout[i].style.display = displayLogout;
   }
+  const formAddComment = document.getElementById("form-add-comment");
+  if (formAddComment) {
+    formAddComment.style.display = displayLogout;
+  }
 }
 
 function logout() {
   localStorage.clear();
   controlDisplay(false);
+}
+
+async function addComment(e) {
+  e.preventDefault();
+
+  const dataReq = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    comment: document.getElementById("comment").value,
+    blogId: parseInt(document.getElementById("blogId").value),
+    agree: document.getElementById("agree").checked,
+  };
+
+  const token = localStorage.getItem("token");
+
+  try {
+    const resp = await fetch(Url_Authenticate + "/comment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify(dataReq),
+    });
+
+    if (resp.status === 200) {
+      await fetchDataAndBindingView(
+        "blogs/" + dataReq.blogId,
+        "blogs-detail-template",
+        "blogs-list"
+      );
+    } else {
+      const r = await resp.json();
+      document.getElementById("message-error").innerHTML = r.message;
+    }
+  } catch (error) {
+    document.getElementById("message-error").innerHTML = error;
+  }
 }

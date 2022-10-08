@@ -244,14 +244,7 @@
             on
             {{formatDate date}}
             Hits:
-            <a
-              href="#idComment"
-              onclick='fetchDataAndBindingView(
-              "blogs/{{id}}",
-              "blogs-detail-template",
-              "blogs-list",
-            )'
-            >Comment ({{comments.length}})</a>
+            <a href="#" onclick="goToComment(`{{id}}`)">Comment ({{comments.length}})</a>
           </p>
           <div class="clearfix">
             <img
@@ -265,11 +258,7 @@
             <a
               href="#"
               class="readmore btn btn-link p-0 m-0"
-              onclick='fetchDataAndBindingView(
-              "blogs/{{id}}",
-              "blogs-detail-template",
-              "blogs-list",
-            )'
+              onclick="goToDetail(`{{id}}`)"
             >Read more</a>
           </div>
         </div>
@@ -284,7 +273,7 @@
                   <a
                     class="page-link"
                     href="#"
-                    onclick=' fetchDataAndBindingView(
+                    onclick='fetchDataAndBindingView(
                     "blogs?page={{page}}",
                     "blog-list-template",
                     "blogs-list",
@@ -297,7 +286,7 @@
                 <li class="page-item"><a
                     class="page-link"
                     href="#"
-                    onclick=' fetchDataAndBindingView(
+                    onclick='fetchDataAndBindingView(
                        "blogs?page={{page}}",
                       "blog-list-template",
                       "blogs-list",
@@ -359,14 +348,25 @@
         </div>
         <h3>Leave your comments</h3>
         <h3>Post comment as a guest</h3>
-        <div class="mb-3 row">
+        <form
+          class="mb-3 row"
+          onsubmit="addComment(event)"
+          id="form-add-comment"
+        >
+          <input type="hidden" value="{{id}}" id="blogId" />
           <div class="col">
             <label
               for="name"
               class="col-sm-2 col-form-label text-black-50"
             >Name(Required)</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="name" required />
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                required
+              />
             </div>
           </div>
           <div class="col mb-4">
@@ -381,39 +381,41 @@
                 id="email"
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                 required
+                name="email"
               />
             </div>
           </div>
           <div class="mb-4">
             <textarea
               class="form-control"
-              id="message"
+              id="comment"
               style="height: 100px"
               placeholder="Enter your message"
               required
+              name="comment"
             ></textarea>
           </div>
-          <form class="d-flex justify-content-between align-items-center mb-4">
+          <div class="d-flex justify-content-between align-items-center mb-4">
             <div class="form-check">
               <input
                 class="form-check-input"
                 type="checkbox"
-                value=""
-                id="argee"
+                id="agree"
                 required
+                name="agree"
               />
               <label class="form-check-label text-black-50" for="argee">
                 Agree to term and conditions
               </label>
             </div>
-            <button type="submit" href="#" class="btn btn-link p-0 m-0">Submit
-              Comment</button>
-          </form>
+            <button type="submit" class="btn btn-link p-0 m-0">Submit Comment</button>
+          </div>
+          <div class="text-danger text-center" id="message-error"></div>
           <div
             class="text-uppercase bg-black bg-opacity-75 text-white-50 py-1"
             id="idComment"
           >comments</div>
-        </div>
+        </form>
         <div>
           {{#each comments}}
             <p class="text-black-50">
@@ -456,6 +458,28 @@
         "blogs-categories-template",
         "blogs-categories"
       );
+
+      async function goToDetail(id) {
+        await fetchDataAndBindingView(
+          "blogs/" + id,
+          "blogs-detail-template",
+          "blogs-list"
+        );
+
+        checkLogin();
+      }
+
+      async function goToComment(id) {
+        await fetchDataAndBindingView(
+          "blogs/" + id,
+          "blogs-detail-template",
+          "blogs-list"
+        );
+
+        checkLogin();
+
+        window.location.href = "#idComment";
+      }
     </script>
   </body>
 </html>
