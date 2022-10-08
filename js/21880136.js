@@ -31,7 +31,7 @@ async function getAuthenticate(username, password) {
       "Content-Type": "application/json",
       Accept: "application/json",
     },
-    body: JSON.stringify(username, password),
+    body: JSON.stringify({ username, password }),
   });
 
   const data = await resp.json();
