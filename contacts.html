@@ -138,7 +138,7 @@
           <p class="text-black-50">
             Send a email. All fields with an * are required
           </p>
-          <form action="post">
+          <form action="post" onsubmit="onSubmit(event)">
             <div class="row justify-content-center align-items-center">
               <div class="col">
                 <div class="mb-3">
@@ -299,30 +299,34 @@
     <script src="https://www.google.com/recaptcha/enterprise.js?render=6Ldh-GMiAAAAAAsL83l3o-JvpTuARajx_pznb5jE"></script>
 
     <script>
-      grecaptcha.enterprise.ready(function () {
-        grecaptcha.enterprise
-          .execute("6Ldh-GMiAAAAAAsL83l3o-JvpTuARajx_pznb5jE", {
-            action: "submit",
-          })
-          .then(async function (token) {
-            const resp = await fetch("verify.php", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-              },
-              body: JSON.stringify({ "g-token": token }),
-            });
+      function onSubmit(e) {
+        e.preventDefault();
 
-            if (resp.status === 200) {
-              sendEmail();
-            } else {
-              const respMessage = document.getElementById("resp-message");
-              respMessage.innerHTML = "Error: Can not verify RECAPTCHA";
-              respMessage.className = "text-danger";
-            }
-          });
-      });
+        grecaptcha.enterprise.ready(function () {
+          grecaptcha.enterprise
+            .execute("6Ldh-GMiAAAAAAsL83l3o-JvpTuARajx_pznb5jE", {
+              action: "submit",
+            })
+            .then(async function (token) {
+              const resp = await fetch("verify.php", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                },
+                body: JSON.stringify({ "g-token": token }),
+              });
+
+              if (resp.status === 200) {
+                sendEmail();
+              } else {
+                const respMessage = document.getElementById("resp-message");
+                respMessage.innerHTML = "Error: Can not verify RECAPTCHA";
+                respMessage.className = "text-danger";
+              }
+            });
+        });
+      }
 
       function sendEmail() {
         const respMessage = document.getElementById("resp-message");
