@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>21880136 - Web1 Project</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- font awesome  -->
+    <script
+      src="https://kit.fontawesome.com/1415907041.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Bootstrap CSS v5.2.0-beta1 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+
+    <!-- CSS  -->
+    <link rel="stylesheet" href="./css/21880136.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-sm navbar-light">
+        <div class="container">
+          <a class="navbar-brand" href="./index.html"
+            ><img src="./images/logo.png" alt="logo"
+          /></a>
+          <button
+            class="navbar-toggler d-lg-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0" id="menu-header">
+              <li class="nav-item">
+                <a class="nav-link" href="./index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./gallery.html">Gallery</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./blogs.html">Blogs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="./contacts.html">Contacts</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalLogin"
+                  href="#"
+                  >Login</a
+                >
+              </li>
+            </ul>
+            <form
+              class="d-flex my-2 my-lg-0 border rounded-pill"
+              id="from-search"
+            >
+              <input
+                class="form-control me-sm-2 border-0 rounded-pill ms-1"
+                type="text"
+                placeholder="Search"
+              />
+              <button class="btn" type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main id="main-content">
+      <!-- Banner -->
+      <div class="mb-5 mx-3" id="small-banner"></div>
+      <!-- Blogs -->
+      <div class="container">
+        <h1 class="mb-5">Contacts</h1>
+        <div class="mb-4" id="map"></div>
+        <div class="row mb-4">
+          <div class="col col-lg-4">
+            <h1>Address</h1>
+            <span class="text-black-50"
+              >227 Nguyen Van Cu Street <br />
+              District 5 <br />
+              Ho Chi Minh, Vietname
+            </span>
+          </div>
+          <div class="col col-lg-4">
+            <h1>Phone</h1>
+            <span class="text-black-50"
+              >+1 800 559 6580 <br />
+              +1 504 889 9898
+            </span>
+          </div>
+          <div class="col col-lg-4">
+            <h1>E-mail</h1>
+            <span class="text-black-50"
+              ><a href="mailto:info@hcmus.edu.vn">info@hcmus.edu.vn</a>
+            </span>
+          </div>
+        </div>
+        <div>
+          <h1 class="mb-3">Miscellaneous information</h1>
+          <p class="text-black-50">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod
+            autem, reprehenderit quaerat cupiditate iure eveniet repellat ipsum.
+            Similique at id velit facere, alias aspernatur quas illum in quia,
+            aliquid sit.
+          </p>
+          <p class="text-black-50">
+            Send a email. All fields with an * are required
+          </p>
+          <form action="post">
+            <div class="row justify-content-center align-items-center">
+              <div class="col">
+                <div class="mb-3">
+                  <label for="name" class="form-label text-black-50"
+                    >Name *</label
+                  >
+                  <input type="text" class="form-control" id="name" required />
+                </div>
+              </div>
+              <div class="col">
+                <div class="mb-3">
+                  <label for="email" class="form-label text-black-50"
+                    >Email *</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <div class="mb-3">
+                  <label for="subject" class="form-label text-black-50"
+                    >Subject *</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="subject"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="message" class="form-label text-black-50"
+                >Message *</label
+              >
+              <textarea
+                class="form-control"
+                id="message"
+                rows="3"
+                required
+              ></textarea>
+            </div>
+            <div class="d-flex align-items-center mb-3">
+              <span class="me-auto text-primary" id="resp-message"></span>
+              <div class="form-check">
+                <label class="text-black-50" for="agree">
+                  Send copy to yourself
+                </label>
+                <input type="checkbox" value="" id="agree" />
+              </div>
+              <button type="submit" class="btn btn-info ms-3 text-white">
+                Send Email to Us
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <footer class="container-fluid">
+      <ul class="nav justify-content-center mb-3">
+        <li class="nav-item">
+          <a class="nav-link" href="#" aria-current="page">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Gallery</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Blogs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Contacts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+      </ul>
+      <p class="text-center text-white-50">
+        Copyright &copy; 2022 by Nguyen Minh Thao
+      </p>
+      <!-- place footer here -->
+    </footer>
+    <!-- modal login -->
+
+    <div
+      class="modal fade"
+      id="modalLogin"
+      tabindex="-1"
+      aria-labelledby="modalLogin"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form action="" id="modalFormLogin">
+              <h3 class="text-center">Login Form</h3>
+              <div class="mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Username"
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Password"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary w-100 mb-3 border-0">
+                Login
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS files in src -->
+    <script src="./js/21880136.js"></script>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+      integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Handle bar -->
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+
+    <script src="./js/map.js"></script>
+    <!-- Handle function -->
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6Ldh-GMiAAAAAAsL83l3o-JvpTuARajx_pznb5jE"></script>
+
+    <script>
+      grecaptcha.enterprise.ready(function () {
+        grecaptcha.enterprise
+          .execute("6Ldh-GMiAAAAAAsL83l3o-JvpTuARajx_pznb5jE", {
+            action: "submit",
+          })
+          .then(async function (token) {
+            const resp = await fetch("verify.php", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+              body: JSON.stringify({ "g-token": token }),
+            });
+
+            if (resp.status === 200) {
+              sendEmail();
+            } else {
+              const respMessage = document.getElementById("resp-message");
+              respMessage.innerHTML = "Error: Can not verify RECAPTCHA";
+              respMessage.className = "text-danger";
+            }
+          });
+      });
+
+      function sendEmail() {
+        const respMessage = document.getElementById("resp-message");
+        respMessage.innerHTML = "OK";
+        respMessage.className = "text-primary";
+      }
+    </script>
+  </body>
+</html>
