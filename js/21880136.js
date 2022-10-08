@@ -82,6 +82,7 @@ async function verifyToken() {
   if (resp.status === 200) {
     return true;
   }
+  localStorage.clear();
   return false;
 }
 

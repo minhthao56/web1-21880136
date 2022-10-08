@@ -96,11 +96,14 @@
             <form
               class="d-flex my-2 my-lg-0 border rounded-pill"
               id="from-search"
+              method="get"
+              action="./search.html"
             >
               <input
                 class="form-control me-sm-2 border-0 rounded-pill ms-1"
                 type="text"
                 placeholder="Search"
+                name="keyword"
               />
               <button class="btn" type="submit">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -188,7 +191,9 @@
                 <p>
                   It has survived not only five centuries, but also the leap
                   into electronic typesetting, remaining essentially unchanged.
-                  <a href="#" class="readmore btn btn-link p-0">Read more</a>
+                  <a href="./about.html" class="readmore btn btn-link p-0"
+                    >Read more</a
+                  >
                 </p>
               </div>
             </div>
@@ -346,7 +351,7 @@
             <p>
              {{summary}}
             </p>
-            <a href="#" class="readmore btn btn-link pt-0" onclick="gotoDetail(`{{id}}`, `products`)">Read more</a>
+            <a href="?req=products/{{id}}" class="readmore btn btn-link pt-0">Read more</a>
           </div>
         {{/each}}
       </div>
@@ -361,11 +366,8 @@
               <div class="date text-white rounded-4 text-center">
                 {{date}}
               </div>
-              <a
-                href="#"
-                class="readmore btn btn-link p-0"
-                onclick="gotoDetail(`{{id}}`, `news`)"
-              >Read more</a>
+              <a href="?req=news/{{id}}" class="readmore btn btn-link p-0">Read
+                more</a>
             </div>
             <div>
               <h3>{{name}}</h3>
@@ -388,18 +390,27 @@
       {{/each}}
     </script>
 
+    <script id="aboutus-template" type="text/x-handlebars-template">
+      <div class="container-fluid mb-3" id="small-banner"></div>
+      {{#each data}}
+        <div class="container" id="content-detail">
+          <h1 class="text-black-10">{{name}}</h1>
+          <p>{{{description}}}</p>
+        </div>
+      {{/each}}
+    </script>
+
     <!-- Handle function -->
     <script>
-      checkLogin();
-      fetchDataAndBindingView("products", "product-template", "product-home");
-      fetchDataAndBindingView("news", "news-template", "news-home");
+      const search = new URLSearchParams(location.search);
+      const req = search.get("req");
 
-      function gotoDetail(id, entity) {
-        fetchDataAndBindingView(
-          `${entity}/${id}`,
-          "detail-template",
-          "main-content"
-        );
+      if (req) {
+        fetchDataAndBindingView(req, "detail-template", "main-content");
+      } else {
+        checkLogin();
+        fetchDataAndBindingView("products", "product-template", "product-home");
+        fetchDataAndBindingView("news", "news-template", "news-home");
       }
 
       function setActiveImage(element, imagePath, isActive) {

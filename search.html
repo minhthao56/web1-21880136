@@ -109,8 +109,7 @@
       <!-- Banner -->
       <div class="mb-3 mx-3" id="small-banner"></div>
       <!-- Gallery -->
-      <div class="container" id="nav-category"></div>
-      <div class="container py-4" id="images-category"></div>
+      <div class="container" id="content"></div>
     </main>
     <footer class="container-fluid">
       <ul class="nav justify-content-center mb-3">
@@ -222,80 +221,52 @@
 
     <!-- Template handle bar -->
 
-    <script id="nav-category-template" type="text/x-handlebars-template">
-      <h1>Gallery</h1>
-      <p class="text-black-50">Filter by category:</p>
-
-      <ul class="nav justify-content-start">
-        <li class="nav-item">
-          <a
-            class="nav-link p-0 pe-4 disabled"
-            href="#"
-            onclick='fetchDataAndBindingView(
-              "gallery",
-              "category-image-template",
-              "images-category"
-            ); disableLink(this);'
-          >Show all</a>
-        </li>
-        {{#each data}}
-          <li class="nav-item">
-            <a
-              class="nav-link p-0 pe-4"
-              href="#"
-              onclick='fetchDataAndBindingView(
-                `gallery/categories/{{id}}`,
-                "category-image-template",
-                "images-category"
-              ); disableLink(this)'
-            >{{name}}</a>
-          </li>
-        {{/each}}
-      </ul>
+    <script id="list-template" type="text/x-handlebars-template">
+      {{#each data}}
+        <a
+          href="#"
+          class="text-decoration-none"
+          onclick="fetchDataAndBindingView(`{{type}}/{{id}}`,'detail-template', 'content')"
+        >
+          <h1 class="text-black">
+            {{name}}
+          </h1>
+        </a>
+        <p class="text-black-50">
+          {{summary}}
+        </p>
+      {{/each}}
     </script>
 
-    <script id="category-image-template" type="text/x-handlebars-template">
-      <div class="row">
-        {{#each data}}
-          <div class="col col-lg-3">
-            <img
-              src="{{thumbpath}}"
-              alt="{{name}}"
-              class="img-thumbnail mb-3"
-            />
-          </div>
-        {{/each}}
-      </div>
+    <script id="detail-template" type="text/x-handlebars-template">
+      {{#each data}}
+        <h1 class="text-black">
+          {{name}}
+        </h1>
+        <div class="text-black-50 clearfix">
+          <img
+            src="{{thumbpath}}"
+            alt="{{thumbpath}}"
+            class="img-thumbnail float-start rounded-3 me-3"
+          />
+          {{{description}}}
+        </div>
+      {{/each}}
     </script>
 
     <!-- Handle function -->
     <script>
       checkLogin();
 
-      const search = new URLSearchParams(location.search);
-      const req = search.get("req");
-      fetchDataAndBindingView(
-        "gallery-categories",
-        "nav-category-template",
-        "nav-category"
-      );
+      const searchParams = new URLSearchParams(location.search);
 
-      fetchDataAndBindingView(
-        "gallery",
-        "category-image-template",
-        "images-category"
-      );
-
-      function showEachCategories(id) {}
-
-      function disableLink(currentLink) {
-        const allLinks = document.querySelectorAll("#nav-category a");
-
-        for (const link of allLinks) {
-          link.classList.remove("disabled");
-          // Disable current link
-        }
-        currentLink.classList.toggle("disabled");
+      const keyword = searchParams.get("keyword");
+      if (keyword) {
+        fetchDataAndBindingView(
+          `search?keyword=${keyword}`,
+          "list-template",
+          "content"
+        );
       }
     </script>
   </body>
