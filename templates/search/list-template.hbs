@@ -1,0 +1,14 @@
+{{#each data}}
+  <a
+    href="#"
+    class="text-decoration-none"
+    onclick="fetchDataAndBindingView(`{{type}}/{{id}}`,'detail-template', 'content')"
+  >
+    <h1 class="text-black">
+      {{name}}
+    </h1>
+  </a>
+  <p class="text-black-50">
+    {{summary}}
+  </p>
+{{/each}}

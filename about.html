@@ -33,7 +33,7 @@
     />
 
     <!-- CSS  -->
-    <link rel="stylesheet" href="./css/21880136.css" />
+    <link rel="stylesheet" href="./css/21880136.min.css" />
   </head>
 
   <body>
@@ -91,11 +91,14 @@
             <form
               class="d-flex my-2 my-lg-0 border rounded-pill"
               id="from-search"
+              method="get"
+              action="./search.html"
             >
               <input
                 class="form-control me-sm-2 border-0 rounded-pill ms-1"
                 type="text"
                 placeholder="Search"
+                name="keyword"
               />
               <button class="btn" type="submit">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -213,7 +216,7 @@
     </div>
 
     <!-- JS files in src -->
-    <script src="./js/21880136.js"></script>
+    <script src="./js/21880136.min.js"></script>
     <!-- Bootstrap JavaScript Libraries -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
@@ -228,134 +231,42 @@
     ></script>
 
     <!-- Handle bar -->
-    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.runtime.min.js"
+      integrity="sha512-1JsLHOJ3aKKxY96SA64yDTGQXo46wjivsGj6LiZGQaz0V6cGpGjfFOm1fnH9WkNwf8FFaIU8jVrvAjSESKESww=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script src="./js/about.template.min.js"></script>
 
     <!-- Template handle bar -->
-
-    <script id="about-us-template" type="text/x-handlebars-template">
-      {{#each data}}
-        <h1 class="mb-3 text-black-40">{{name}}</h1>
-        <img
-          src="{{thumbpath}}"
-          alt="{{thumbpath}}"
-          class="float-start rounded-4 me-3"
-        />
-        <div>
-          {{{summary}}}
-          <a
-            href="#"
-            class="readmore btn btn-link p-0"
-            onclick='fetchDataAndBindingView("aboutus/{{id}}", "detail-about-template", "content-about-us");'
-          >
-            Read more
-          </a>
-        </div>
-      {{/each}}
-    </script>
-
-    <script id="visions-template" type="text/x-handlebars-template">
-      <h1 class="mb-3 text-black-40">Our Vision</h1>
-      {{#each data}}
-        <a
-          href="#"
-          class="clearfix mb-2 text-decoration-none"
-          onclick='fetchDataAndBindingView("visions/{{id}}", "detail-about-template", "content-about-us");'
-        >
-          <img
-            src="{{thumbpath}}"
-            alt="{{thumbpath}}"
-            class="float-start me-3 rounded-4"
-          />
-          <h3 class="text-black">{{name}}</h3>
-          <p class="text-black-50">
-            {{summary}}
-          </p>
-        </a>
-      {{/each}}
-    </script>
-
-    <script id="testimonials-template" type="text/x-handlebars-template">
-      <h1 class="text-white">Testimonials</h1>
-      <div class="row">
-
-        {{#each data}}
-          <div class="col d-flex col-lg-4 col-md-12">
-            <img
-              src="./images/quot.png"
-              alt=""
-              width="33px"
-              height="28px"
-              class="me-3"
-            />
-            <div>
-              <p class="text-black-50">
-                {{summary}}
-              </p>
-              <span class="text-white">{{name}}</span><br />
-              <a href="#" class="readmore btn btn-link p-0 m-0">{{email}}</a>
-            </div>
-          </div>
-        {{/each}}
-      </div>
-    </script>
-
-    <script id="team-template" type="text/x-handlebars-template">
-      <h1 class="mb-3">Our Team</h1>
-      <div class="row">
-        {{#each data}}
-          <div class="col col-lg-3 col-md-6 col-sm-12">
-            <a
-              href="#"
-              class="text-decoration-none"
-              onclick='fetchDataAndBindingView("team/{{id}}", "detail-about-template", "content-about-us");'
-            >
-              <img
-                src="{{thumbpath}}"
-                alt="{{thumbpath}}"
-                class="rounded-4 mb-3"
-              />
-              <p class="fw-bolder text-black">{{name}}</p>
-              <p class="text-black-50">
-                {{summary}}
-              </p>
-            </a>
-
-          </div>
-        {{/each}}
-      </div>
-    </script>
-
-    <script id="detail-about-template" type="text/x-handlebars-template">
-      <div class="container px-5 mb-5 clearfix" id="detail-about-us">
-        {{#each data}}
-          <h1 class="mb-5">
-            {{name}}
-          </h1>
-          <div class="pe-5">
-            <img
-              src="{{imagepath}}"
-              alt=""
-              class="float-start me-4 rounded-4"
-            />
-            <p class="text-black-50">{{{description}}}</p>
-          </div>
-        {{/each}}
-
-      </div>
-    </script>
 
     <!-- Handle function -->
     <script>
       checkLogin();
-      fetchDataAndBindingView("aboutus", "about-us-template", "about-us-col");
-      fetchDataAndBindingView("visions", "visions-template", "visions-col");
 
-      fetchDataAndBindingView(
-        "testimonials",
-        "testimonials-template",
-        "testimonials-about"
-      );
-      fetchDataAndBindingView("team", "team-template", "our-team-about");
+      const search = new URLSearchParams(location.search);
+
+      const req = search.get("req");
+
+      if (req) {
+        fetchDataAndBindingView(
+          req,
+          "detail-about-template",
+          "content-about-us"
+        );
+      } else {
+        fetchDataAndBindingView("aboutus", "about-us-template", "about-us-col");
+        fetchDataAndBindingView("visions", "visions-template", "visions-col");
+
+        fetchDataAndBindingView(
+          "testimonials",
+          "testimonials-template",
+          "testimonials-about"
+        );
+        fetchDataAndBindingView("team", "team-template", "our-team-about");
+      }
     </script>
   </body>
 </html>

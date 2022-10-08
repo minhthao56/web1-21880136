@@ -1,0 +1,20 @@
+<h1 class="mb-4">Categories</h1>
+<ul class="m-0 p-0">
+  {{#each data}}
+    <li class="mb-2">
+      <img src="./images/marker1.png" alt="" class="me-2" />
+      <a
+        href="#"
+        class="text-decoration-none text-black-50"
+        onclick='fetchDataAndBindingView(
+              "blogs/categories/{{id}}?page=1",
+              "blog-list-template",
+              "blogs-list",
+              true
+            )'
+      >
+        {{name}}
+      </a>
+    </li>
+  {{/each}}
+</ul>

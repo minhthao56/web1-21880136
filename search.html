@@ -33,7 +33,7 @@
     />
 
     <!-- CSS  -->
-    <link rel="stylesheet" href="./css/21880136.css" />
+    <link rel="stylesheet" href="./css/21880136.min.css" />
   </head>
 
   <body>
@@ -202,7 +202,7 @@
     </div>
 
     <!-- JS files in src -->
-    <script src="./js/21880136.js"></script>
+    <script src="./js/21880136.min.js"></script>
     <!-- Bootstrap JavaScript Libraries -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
@@ -217,42 +217,16 @@
     ></script>
 
     <!-- Handle bar -->
-    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.runtime.min.js"
+      integrity="sha512-1JsLHOJ3aKKxY96SA64yDTGQXo46wjivsGj6LiZGQaz0V6cGpGjfFOm1fnH9WkNwf8FFaIU8jVrvAjSESKESww=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script src="./js/search.template.min.js"></script>
 
     <!-- Template handle bar -->
-
-    <script id="list-template" type="text/x-handlebars-template">
-      {{#each data}}
-        <a
-          href="#"
-          class="text-decoration-none"
-          onclick="fetchDataAndBindingView(`{{type}}/{{id}}`,'detail-template', 'content')"
-        >
-          <h1 class="text-black">
-            {{name}}
-          </h1>
-        </a>
-        <p class="text-black-50">
-          {{summary}}
-        </p>
-      {{/each}}
-    </script>
-
-    <script id="detail-template" type="text/x-handlebars-template">
-      {{#each data}}
-        <h1 class="text-black">
-          {{name}}
-        </h1>
-        <div class="text-black-50 clearfix">
-          <img
-            src="{{thumbpath}}"
-            alt="{{thumbpath}}"
-            class="img-thumbnail float-start rounded-3 me-3"
-          />
-          {{{description}}}
-        </div>
-      {{/each}}
-    </script>
 
     <!-- Handle function -->
     <script>

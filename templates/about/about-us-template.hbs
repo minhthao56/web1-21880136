@@ -1,0 +1,17 @@
+{{#each data}}
+  <h1 class="mb-3 text-black-40">{{name}}</h1>
+  <img
+    src="{{thumbpath}}"
+    alt="{{thumbpath}}"
+    class="float-start rounded-4 me-3"
+  />
+  <div>
+    {{{summary}}}
+    <a
+      href="?req=aboutus/{{id}}"
+      class="readmore btn btn-link p-0"
+    >
+      Read more
+    </a>
+  </div>
+{{/each}}

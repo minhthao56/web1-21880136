@@ -1,0 +1,12 @@
+<div class="container px-5 mb-5 clearfix" id="detail-about-us">
+  {{#each data}}
+    <h1 class="mb-5">
+      {{name}}
+    </h1>
+    <div class="pe-5">
+      <img src="{{imagepath}}" alt="" class="float-start me-4 rounded-4" />
+      <p class="text-black-50">{{{description}}}</p>
+    </div>
+  {{/each}}
+
+</div>

@@ -33,7 +33,7 @@
     />
 
     <!-- CSS  -->
-    <link rel="stylesheet" href="./css/21880136.css" />
+    <link rel="stylesheet" href="./css/21880136.min.css" />
   </head>
 
   <body>
@@ -322,7 +322,7 @@
     </div>
 
     <!-- JS files in src -->
-    <script src="./js/21880136.js"></script>
+    <script src="./js/21880136.min.js"></script>
     <!-- Bootstrap JavaScript Libraries -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
@@ -337,68 +337,16 @@
     ></script>
 
     <!-- Handle bar -->
-    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.runtime.min.js"
+      integrity="sha512-1JsLHOJ3aKKxY96SA64yDTGQXo46wjivsGj6LiZGQaz0V6cGpGjfFOm1fnH9WkNwf8FFaIU8jVrvAjSESKESww=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script src="./js/index.template.min.js"></script>
 
     <!-- Template handle bar -->
-    <script id="product-template" type="text/x-handlebars-template">
-      <div class="row text-center py-5">
-        {{#each data}}
-          <div class="col col-lg-3 col-md-6 col-sm-12">
-            <img src="{{imagepath}}" alt="{{name}}""
-            onmouseenter="setActiveImage(this,`{{imagepath}}`, true)"
-            onmouseleave="setActiveImage(this,`{{imagepath}}`,  false)"/>
-            <h3>{{name}}</h3>
-            <p>
-             {{summary}}
-            </p>
-            <a href="?req=products/{{id}}" class="readmore btn btn-link pt-0">Read more</a>
-          </div>
-        {{/each}}
-      </div>
-    </script>
-
-    <script id="news-template" type="text/x-handlebars-template">
-      <h1 class="text-black-50 py-4">News</h1>
-      <div class="row">
-        {{#each data}}
-          <div class="col col-lg-4 col-md-6 col-sm-12 py-2">
-            <div class="float-start me-4">
-              <div class="date text-white rounded-4 text-center">
-                {{date}}
-              </div>
-              <a href="?req=news/{{id}}" class="readmore btn btn-link p-0">Read
-                more</a>
-            </div>
-            <div>
-              <h3>{{name}}</h3>
-              <p class="text-black-50">
-                {{summary}}
-              </p>
-            </div>
-          </div>
-        {{/each}}
-      </div>
-    </script>
-
-    <script id="detail-template" type="text/x-handlebars-template">
-      <div class="container-fluid mb-3" id="small-banner"></div>
-      {{#each data}}
-        <div class="container" id="content-detail">
-          <h1 class="text-black-10">{{name}}</h1>
-          <p>{{{description}}}</p>
-        </div>
-      {{/each}}
-    </script>
-
-    <script id="aboutus-template" type="text/x-handlebars-template">
-      <div class="container-fluid mb-3" id="small-banner"></div>
-      {{#each data}}
-        <div class="container" id="content-detail">
-          <h1 class="text-black-10">{{name}}</h1>
-          <p>{{{description}}}</p>
-        </div>
-      {{/each}}
-    </script>
 
     <!-- Handle function -->
     <script>

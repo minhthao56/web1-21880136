@@ -12,8 +12,9 @@ async function fetchDataAndBindingView(
 
   var resp = await fetch(`${url}${req}`);
   var data = await resp.json();
-  var source = document.getElementById(templateId).innerHTML;
-  var template = Handlebars.compile(source);
+  // var source = document.getElementById(templateId).innerHTML;
+  // var template = Handlebars.compile(source);
+  var template = Handlebars.templates[`${templateId}.hbs`];
   var context = paginationData ? data : { data };
   if (paginationData) {
     const array = req.split("?");

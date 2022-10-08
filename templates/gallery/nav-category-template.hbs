@@ -1,0 +1,29 @@
+<h1>Gallery</h1>
+<p class="text-black-50">Filter by category:</p>
+
+<ul class="nav justify-content-start">
+  <li class="nav-item">
+    <a
+      class="nav-link p-0 pe-4 disabled"
+      href="#"
+      onclick='fetchDataAndBindingView(
+              "gallery",
+              "category-image-template",
+              "images-category"
+            ); disableLink(this);'
+    >Show all</a>
+  </li>
+  {{#each data}}
+    <li class="nav-item">
+      <a
+        class="nav-link p-0 pe-4"
+        href="#"
+        onclick='fetchDataAndBindingView(
+                `gallery/categories/{{id}}`,
+                "category-image-template",
+                "images-category"
+              ); disableLink(this)'
+      >{{name}}</a>
+    </li>
+  {{/each}}
+</ul>

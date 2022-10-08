@@ -33,7 +33,7 @@
     />
 
     <!-- CSS  -->
-    <link rel="stylesheet" href="./css/21880136.css" />
+    <link rel="stylesheet" href="./css/21880136.min.css" />
   </head>
 
   <body>
@@ -91,11 +91,14 @@
             <form
               class="d-flex my-2 my-lg-0 border rounded-pill"
               id="from-search"
+              method="get"
+              action="./search.html"
             >
               <input
                 class="form-control me-sm-2 border-0 rounded-pill ms-1"
                 type="text"
                 placeholder="Search"
+                name="keyword"
               />
               <button class="btn" type="submit">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -301,7 +304,7 @@
     </div>
 
     <!-- JS files in src -->
-    <script src="./js/21880136.js"></script>
+    <script src="./js/21880136.min.js"></script>
     <!-- Bootstrap JavaScript Libraries -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
@@ -315,12 +318,9 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- Handle bar -->
-    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 
-    <script src="./js/map.js"></script>
+    <script src="./js/map.min.js"></script>
     <!-- Handle function -->
     <script src="https://www.google.com/recaptcha/enterprise.js?render=6Ldh-GMiAAAAAAsL83l3o-JvpTuARajx_pznb5jE"></script>
 

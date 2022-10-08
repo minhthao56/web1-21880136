@@ -33,7 +33,7 @@
     />
 
     <!-- CSS  -->
-    <link rel="stylesheet" href="./css/21880136.css" />
+    <link rel="stylesheet" href="./css/21880136.min.css" />
   </head>
 
   <body>
@@ -91,11 +91,14 @@
             <form
               class="d-flex my-2 my-lg-0 border rounded-pill"
               id="from-search"
+              method="get"
+              action="./search.html"
             >
               <input
                 class="form-control me-sm-2 border-0 rounded-pill ms-1"
                 type="text"
                 placeholder="Search"
+                name="keyword"
               />
               <button class="btn" type="submit">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -203,7 +206,7 @@
     </div>
 
     <!-- JS files in src -->
-    <script src="./js/21880136.js"></script>
+    <script src="./js/21880136.min.js"></script>
     <!-- Bootstrap JavaScript Libraries -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
@@ -218,55 +221,16 @@
     ></script>
 
     <!-- Handle bar -->
-    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.runtime.min.js"
+      integrity="sha512-1JsLHOJ3aKKxY96SA64yDTGQXo46wjivsGj6LiZGQaz0V6cGpGjfFOm1fnH9WkNwf8FFaIU8jVrvAjSESKESww=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script src="./js/gallery.template.min.js"></script>
 
     <!-- Template handle bar -->
-
-    <script id="nav-category-template" type="text/x-handlebars-template">
-      <h1>Gallery</h1>
-      <p class="text-black-50">Filter by category:</p>
-
-      <ul class="nav justify-content-start">
-        <li class="nav-item">
-          <a
-            class="nav-link p-0 pe-4 disabled"
-            href="#"
-            onclick='fetchDataAndBindingView(
-              "gallery",
-              "category-image-template",
-              "images-category"
-            ); disableLink(this);'
-          >Show all</a>
-        </li>
-        {{#each data}}
-          <li class="nav-item">
-            <a
-              class="nav-link p-0 pe-4"
-              href="#"
-              onclick='fetchDataAndBindingView(
-                `gallery/categories/{{id}}`,
-                "category-image-template",
-                "images-category"
-              ); disableLink(this)'
-            >{{name}}</a>
-          </li>
-        {{/each}}
-      </ul>
-    </script>
-
-    <script id="category-image-template" type="text/x-handlebars-template">
-      <div class="row">
-        {{#each data}}
-          <div class="col col-lg-3">
-            <img
-              src="{{thumbpath}}"
-              alt="{{name}}"
-              class="img-thumbnail mb-3"
-            />
-          </div>
-        {{/each}}
-      </div>
-    </script>
 
     <!-- Handle function -->
     <script>
