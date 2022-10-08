@@ -1,4 +1,6 @@
-var url = "https://web1-api.herokuapp.com/api/";
+const url = "https://web1-api.herokuapp.com/api/";
+
+const Url_Authenticate = "https://web1-api.herokuapp.com/api/users";
 
 async function fetchDataAndBindingView(
   req,
@@ -20,4 +22,23 @@ async function fetchDataAndBindingView(
     context.currentPage = currentPage;
   }
   view.innerHTML = template(context);
+}
+
+async function getAuthenticate(username, password) {
+  const resp = await fetch(Url_Authenticate + "/authenticate", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(username, password),
+  });
+
+  const data = await resp.json();
+
+  if (resp.status === 200) {
+    return data.token;
+  }
+
+  throw new Error(data.message);
 }

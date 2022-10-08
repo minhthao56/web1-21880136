@@ -190,10 +190,10 @@
             <div class="d-flex align-items-center mb-3">
               <span class="me-auto text-primary" id="resp-message"></span>
               <div class="form-check">
-                <label class="text-black-50" for="agree">
+                <label class="text-black-50" for="copy">
                   Send copy to yourself
                 </label>
-                <input type="checkbox" value="" id="agree" />
+                <input type="checkbox" value="" id="copy" />
               </div>
               <button type="submit" class="btn btn-info ms-3 text-white">
                 Send Email to Us
@@ -322,16 +322,51 @@
               } else {
                 const respMessage = document.getElementById("resp-message");
                 respMessage.innerHTML = "Error: Can not verify RECAPTCHA";
-                respMessage.className = "text-danger";
+                respMessage.classList.remove("text-danger");
+                respMessage.classList.toggle("text-danger");
               }
             });
         });
       }
 
-      function sendEmail() {
-        const respMessage = document.getElementById("resp-message");
-        respMessage.innerHTML = "OK";
-        respMessage.className = "text-primary";
+      async function sendEmail() {
+        try {
+          const token = await getAuthenticate("test", "1c3cr3@m");
+
+          const dataReq = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            subject: document.getElementById("subject").value,
+            message: document.getElementById("message").value,
+            copy: document.getElementById("copy").value,
+          };
+
+          const resp = await fetch(Url_Authenticate + "/send", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+              Authorization: "Bearer " + token,
+            },
+            body: JSON.stringify(dataReq),
+          });
+
+          const results = await resp.json();
+
+          if (resp.status === 200) {
+            const respMessage = document.getElementById("resp-message");
+            respMessage.innerHTML = "OK";
+            respMessage.classList.remove("text-primary");
+            respMessage.classList.toggle("text-primary");
+          } else {
+            throw new Error(resp.message);
+          }
+        } catch (error) {
+          const respMessage = document.getElementById("resp-message");
+          respMessage.innerHTML = error;
+          respMessage.classList.remove("text-danger");
+          respMessage.classList.toggle("text-danger");
+        }
       }
     </script>
   </body>
