@@ -8,6 +8,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
 
     <!-- Google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -72,11 +73,18 @@
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link"
+                  class="nav-link linkLogin"
                   data-bs-toggle="modal"
                   data-bs-target="#modalLogin"
                   href="#"
                   >Login</a
+                >
+                <a
+                  class="nav-link linkLogout"
+                  href="#"
+                  style="display: none"
+                  onclick="logout()"
+                  >Logout</a
                 >
               </li>
             </ul>
@@ -122,7 +130,20 @@
           <a class="nav-link" href="#">Contacts</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
+          <a
+            class="nav-link linkLogin"
+            data-bs-toggle="modal"
+            data-bs-target="#modalLogin"
+            href="#"
+            >Login</a
+          >
+          <a
+            class="nav-link linkLogout"
+            href="#"
+            style="display: none"
+            onclick="logout()"
+            >Logout</a
+          >
         </li>
       </ul>
       <p class="text-center text-white-50">
@@ -151,13 +172,14 @@
             ></button>
           </div>
           <div class="modal-body">
-            <form action="" id="modalFormLogin">
+            <form action="" id="modalFormLogin" onsubmit="login(event)">
               <h3 class="text-center">Login Form</h3>
               <div class="mb-3">
                 <input
-                  type="email"
+                  type="text"
                   class="form-control"
                   placeholder="Username"
+                  id="username"
                 />
               </div>
               <div class="mb-3">
@@ -165,12 +187,16 @@
                   type="password"
                   class="form-control"
                   placeholder="Password"
+                  id="password"
                 />
               </div>
-              <button type="submit" class="btn btn-primary w-100 mb-3 border-0">
+              <button type="submit" class="btn btn-primary w-100 border-0">
                 Login
               </button>
             </form>
+          </div>
+          <div class="modal-footer">
+            <div id="errorMessageLogin" class="text-danger"></div>
           </div>
         </div>
       </div>
@@ -236,6 +262,7 @@
 
     <!-- Handle function -->
     <script>
+      checkLogin();
       fetchDataAndBindingView(
         "gallery-categories",
         "nav-category-template",

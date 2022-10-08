@@ -42,3 +42,69 @@ async function getAuthenticate(username, password) {
 
   throw new Error(data.message);
 }
+
+async function login(e) {
+  console.log({ e });
+  e.preventDefault();
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  try {
+    const token = await getAuthenticate(username, password);
+    localStorage.setItem("token", token);
+    document.getElementsByClassName("btn-close")[0].click();
+    await checkLogin();
+  } catch (error) {
+    document.getElementById("errorMessageLogin").innerText = error;
+  }
+}
+
+async function checkLogin() {
+  const isLogin = await verifyToken();
+  controlDisplay(isLogin);
+}
+
+async function verifyToken() {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    return false;
+  }
+
+  const resp = await fetch(Url_Authenticate + "/verify", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: "Bearer " + token,
+    },
+  });
+
+  if (resp.status === 200) {
+    return true;
+  }
+  return false;
+}
+
+function controlDisplay(isLogin = true) {
+  const linkLogin = document.getElementsByClassName("linkLogin");
+  const linkLogout = document.getElementsByClassName("linkLogout");
+
+  let displayLogin = "block";
+  let displayLogout = "none";
+
+  if (isLogin) {
+    displayLogout = "block";
+    displayLogin = "none";
+  }
+
+  for (let i = 0; i < linkLogin.length; i++) {
+    linkLogin[i].style.display = displayLogin;
+    linkLogout[i].style.display = displayLogout;
+  }
+}
+
+function logout() {
+  localStorage.clear();
+  controlDisplay(false);
+}
