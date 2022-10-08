@@ -1,6 +1,6 @@
 const url = "https://web1-api.herokuapp.com/api/";
 
-const Url_Authenticate = "https://web1-api.herokuapp.com/api/users";
+const Url_Authenticate = "https://web1-api.herokuapp.com/users";
 
 async function fetchDataAndBindingView(
   req,
